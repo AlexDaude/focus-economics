@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17.5-bookworm
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "1234" #only for dummy propouses
+    ports:
+      - 8000:5432
+    volumes:
+      - ./backend/postgresql:/docker-entrypoint-initdb.d
+  app:
+    depends_on:
+      - postgres
+    build: .
+       
+
+    
+
+    
