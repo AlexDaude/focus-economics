@@ -29,8 +29,8 @@ python 3.13.5
 1) docker compose is running postgresql
 2) docker compose waits until postgresql is up
 3) docker compose runs app
-4) app parse pdf and extracting tables
-5) app parse tables and extracting clean dfs
+4) app parse pdf and extract tables
+5) app parse tables and extract clean dfs
 6) app split tables if they're wrongly joined
 6) app saves all tables in backend/results as csv, in folder results - it should appear inside focus-economics folder -
 7) app finds the 3 top Assets, and the 3 worst (printed in console)
