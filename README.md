@@ -2,7 +2,7 @@
 
 # Python version
 
-pyhton 3.13.5
+python 3.13.5
 
 
 # Run
