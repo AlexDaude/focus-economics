@@ -24,7 +24,7 @@ run -> \dt
 run -> SELECT * FROM tablename
 
 
-# Reults
+# Results
 
 docker compose is running postgresql
 docker compose waits until postgresql is up
