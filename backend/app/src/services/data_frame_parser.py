@@ -89,8 +89,11 @@ class DataFrameParser:
             df.reset_index(drop=True, inplace=True)
             df.columns = df.iloc[0]
             df.drop(0, inplace=True)
+        
+        for df in dfs:
             if "" in df.columns:
                 df.drop(columns="", inplace=True)
+            
         return dfs
              
 
