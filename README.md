@@ -7,7 +7,7 @@ python 3.13.5
 
 # Run
 
-1) Clone github repository
+1) Clone github repository -> https://github.com/AlexDaude/focus-economics.git
 2) From a terminal go to focus-economics directory 
 3) make sure docker engine is up and running in your pc
 4) run in your terminal -> docker compose up 
