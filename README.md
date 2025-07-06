@@ -7,17 +7,18 @@ python 3.13.5
 
 # Run
 
-1) Clone github repository -> https://github.com/AlexDaude/focus-economics.git
+1) Clone github repository -> git clone https://github.com/AlexDaude/focus-economics.git
 2) From a terminal go to focus-economics directory 
-3) make sure docker engine is up and running in your pc
-4) run in your terminal -> docker compose up 
-5) wait until docker compose up finishes you will see in terminal app-1 exited with code 0
+3) Make sure docker engine is up and running in your pc
+4) Run in your terminal -> docker compose up 
+5) Wait until docker compose up finishes you will see in terminal app-1 exited with code 0
+6) Don't close the terminal where docker compose up was launched to be able to check results
 
 
 # Check results in postgres
 
 
-## In your terminal run
+## In a new terminal run
 
 1) run -> docker run -it --rm --network focus-economics_default -e PGPASSWORD=1234 postgres:17.5-bookworm psql -h postgres -U admin -d focuseconomics
 2) run -> \dt 
