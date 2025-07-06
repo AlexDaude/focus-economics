@@ -8,7 +8,7 @@ python 3.13.5
 # Run
 
 1) Clone github repository -> git clone https://github.com/AlexDaude/focus-economics.git
-2) From a terminal go to focus-economics directory 
+2) run cd focus-economics
 3) Make sure docker engine is up and running in your pc
 4) Run in your terminal -> docker compose up 
 5) Wait until docker compose up finishes you will see in terminal app-1 exited with code 0
