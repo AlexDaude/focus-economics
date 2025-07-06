@@ -12,7 +12,8 @@ services:
     depends_on:
       - postgres
     build: .
-       
+    volumes:
+      - ./results:/backend/results
 
     
 

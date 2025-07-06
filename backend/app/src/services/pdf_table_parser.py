@@ -64,7 +64,7 @@ class PDFTableParser:
     
 
 if __name__ == "__main__":
-    file = r"backend\app\public\241025 Unicredit Macro & Markets Weekly Focus - python.pdf"
+    file = r"backend\app\public\to_parse.pdf"
     pdf_table_parser = PDFTableParser(file)
  
     pdf_table_parser.extract_tables(
@@ -76,7 +76,6 @@ if __name__ == "__main__":
     )
     related_tables = pdf_table_parser.get_page_tables(2)
     print(related_tables[0].df)
-    #camelot.plot(related_tables[0], kind='contour').savefig(r"C:\Users\Daude\Desktop\FocusEconomics\new.jpg")
 
 
             

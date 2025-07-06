@@ -89,15 +89,8 @@ class DataFrameParser:
             df.reset_index(drop=True, inplace=True)
             df.columns = df.iloc[0]
             df.drop(0, inplace=True)
-
-            #unamed cols
-            col_to_delete = []
-            for col in df.columns:
-                if col.find("unamed") != -1:
-                    col_to_delete.append(col)
-            
-            df = df[[col for col in df.columns if col not in col_to_delete]]
-
+            if "" in df.columns:
+                df.drop(columns="", inplace=True)
         return dfs
              
 
@@ -106,8 +99,8 @@ class DataFrameParser:
 
 
 if __name__ == "__main__":
-    file = r"backend\app\public\241025 Unicredit Macro & Markets Weekly Focus - python.pdf"
-    page = 18
+    file = r"backend\app\public\to_parse.pdf"
+    page = 2
     table_parser = PDFTableParser(file)
     table_parser.extract_tables(pages=f"{page}")
     df = table_parser.get_page_tables(page)[0].df

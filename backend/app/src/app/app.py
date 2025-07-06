@@ -67,7 +67,7 @@ def process_and_aggregate_page_2(file: str, src: str, dst: str) -> pd.DataFrame:
     #save sorted
     file_name = "page_2_asset_performance.csv"
     dst_path = os.path.join(dst, file_name)
-    df.to_csv(dst_path)
+    df.to_csv(dst_path, index=False)
 
     print("------------- Top 3 assets - Last 12M -------------\n")
     print(df.head(3)[["Asset","12M"]])
