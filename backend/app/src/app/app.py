@@ -35,7 +35,7 @@ def process_and_save_page_2_and_3(file: str, dst: str, pages: List[int] = [2,3])
             cleaned_dfs = data_frame_parser.split_tables()
         
             for i, df in enumerate(cleaned_dfs):
-                file_name = f"page-{str(p)} table-{str(i)}.csv"
+                file_name = f"page_{str(p)}_table_{str(i)}.csv"
                 dst_file = os.path.join(dst, file_name)
                 df.to_csv(dst_file, index=False)
 
@@ -50,7 +50,7 @@ def process_and_aggregate_page_2(file: str, src: str, dst: str) -> pd.DataFrame:
 
     dfs = []
     for f in os.listdir(src):
-        if f.find("page-2") != -1:
+        if f.find("page_2") != -1:
             full_path = os.path.join(src, f)
             tmp_df = pd.read_csv(full_path)
             tmp_df.columns = tmp_df.columns[1:].insert(0,"Asset")
@@ -65,7 +65,7 @@ def process_and_aggregate_page_2(file: str, src: str, dst: str) -> pd.DataFrame:
     )   
 
     #save sorted
-    file_name = "page-2 asset-performance.csv"
+    file_name = "page_2_asset_performance.csv"
     dst_path = os.path.join(dst, file_name)
     df.to_csv(dst_path)
 
@@ -103,22 +103,25 @@ def process_and_save_pages_16_to_19(file: str, dst: str, pages: List[int] = [16,
             cleaned_dfs = data_frame_parser.split_tables()
 
             for i, df in enumerate(cleaned_dfs):
-                file_name = f"page-{str(p)} table-{str(i)}.csv"
+                file_name = f"page_{str(p)}_table_{str(i)}.csv"
                 dst_file = os.path.join(dst, file_name)
                 df.to_csv(dst_file, index=False)
 
 
 def store_data(src: str):
 
-    connection = Connection.get_connection()
-
-    for file in os.listdir(src):
-        file_path = os.path.join(src, file)
-        df = pd.read_csv(file_path)
-        df.to_sql(
-            file,
-            con=connection
-        )
+    for dirpath, dirs, files in os.walk(src):
+        if not dirs:
+            for f in files:
+                file_path = os.path.join(dirpath, f)
+                df = pd.read_csv(file_path)
+                table_name = f.split(".")[0]
+                df.to_sql(
+                    table_name,
+                    con=Connection.get_connection(),
+                    if_exists="replace",
+                    index=False
+                )
 
 if __name__ == "__main__":
     

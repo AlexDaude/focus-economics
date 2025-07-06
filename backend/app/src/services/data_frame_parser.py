@@ -90,6 +90,14 @@ class DataFrameParser:
             df.columns = df.iloc[0]
             df.drop(0, inplace=True)
 
+            #unamed cols
+            col_to_delete = []
+            for col in df.columns:
+                if col.find("unamed") != -1:
+                    col_to_delete.append(col)
+            
+            df = df[[col for col in df.columns if col not in col_to_delete]]
+
         return dfs
              
 
